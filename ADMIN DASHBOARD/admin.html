@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN DASHBOARD</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- MENU BUTTON -->
+
+    <button id="menubtn" class="menu-btn">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <button id="menuBtn" class="menu-btn">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="logo">
+            Admin Panel
+        </div>
+
+        <div class="header-right">
+
+            <div class="search-bar">
+                <i class="fa fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+
+            <button class="notify-btn" id="notifyBtn">
+                <i class="fa fa-bell"></i>
+            </button>
+
+        </div>
+        <!-- Notification Panel -->
+
+        <div id="notificationPanel" class="notification-panel">
+
+            <h3>Notifications</h3>
+
+            <div class="notification-item">
+                <i class="fa fa-user"></i>
+                <p>New user registered</p>
+                <span>2 min ago</span>
+            </div>
+
+            <div class="notification-item">
+                <i class="fa fa-shopping-cart"></i>
+                <p>New order received</p>
+                <span>10 min ago</span>
+            </div>
+
+            <div class="notification-item">
+                <i class="fa fa-warning"></i>
+                <p>Server warning detected</p>
+                <span>30 min ago</span>
+            </div>
+
+            <div class="notification-item">
+                <i class="fa fa-envelope"></i>
+                <p>New message from client</p>
+                <span>1 hour ago</span>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+
+        <h2>MAIN</h2>
+
+        <a href="#Dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
+        <a href="#Analytics"><i class="fa fa-bar-chart"></i>Analytics</a>
+        <a href="#Customers"><i class="fa fa-users"></i>Customers</a>
+        <a href="#Orders"><i class="fa fa-shopping-cart"></i>Orders</a>
+        <a href="#Reports"><i class="fa fa-file"></i>Reports</a>
+
+        <h2>SYSTEM</h2>
+
+        <a href="#Integration"><i class="fa fa-plug"></i>Integration</a>
+        <a href="#Settings"><i class="fa fa-cog"></i>Settings</a>
+        <h2>ACCOUNT</h2>
+        <a href="#" onclick="logout(); return false;"><i class="fa fa-sign-out"></i>Logout</a>
+    </aside>
+
+    <section id="Dashboard" class="Dashboard">
+        <div class="Dashboard-content">
+            <h1>Dashboard</h1>
+            <p>Overview of your workspace</p>
+        </div>
+        <!-- Dashboard cards -->
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-top">
+                    <span>Total Revenue</span>
+                    <i class="fa fa-dollar"></i>
+                </div>
+                <h2>$45,231</h2>
+                <p class="positive">+20.1% from last month</p>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <span>Active Users</span>
+                    <i class="fa fa-users"></i>
+                </div>
+                <h2>2,350</h2>
+                <p class="positive">+180 this week</p>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <span>Uptime</span>
+                    <i class="fa fa-heartbeat"></i>
+                </div>
+                <h2>99.98%</h2>
+                <p class="positive">+0.02% from last month</p>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <span>Conversion</span>
+                    <i class="fa fa-line-chart"></i>
+                </div>
+                <h2>3.24%</h2>
+                <p class="negative">-0.4% from last month</p>
+            </div>
+
+        </div>
+
+        <!-- chart or graph section -->
+        <div class="chart-box">
+
+            <div class="controls">
+                <button onclick="setMonthly()" class="graph-btn">Monthly</button>
+                <button onclick="setWeekly()" class="graph-btn">Weekly</button>
+                <button onclick="randomizeData()" class="graph-btn">Update Data</button>
+            </div>
+
+            <canvas id="chart"></canvas>
+        </div>
+
+        <!-- RRECENT ACTIVITY CARD SECTION  -->
+        <div class="activity-card">
+            <h3>Recent Activity</h3>
+
+            <div class="activity-item">
+                <span class="dot green"></span>
+                <p><strong>Sarah Chen</strong> deployed <span class="highlight">v2.4.1</span> to production</p>
+                <span class="time">2m ago</span>
+            </div>
+
+            <div class="activity-item">
+                <span class="dot green"></span>
+                <p><strong>Alex Rivera</strong> merged PR <span class="highlight">#482</span> — Auth refactor</p>
+                <span class="time">14m ago</span>
+            </div>
+
+            <div class="activity-item">
+                <span class="dot red"></span>
+                <p><strong>Jordan Lee</strong> opened Issue <span class="highlight">#91</span> — API timeout</p>
+                <span class="time">32m ago</span>
+            </div>
+
+            <div class="activity-item">
+                <span class="dot gray"></span>
+                <p><strong>Morgan Kim</strong> created workspace 'Analytics'</p>
+                <span class="time">1h ago</span>
+            </div>
+
+            <div class="activity-item">
+                <span class="dot gray"></span>
+                <p><strong>Casey Park</strong> updated billing plan to Pro</p>
+                <span class="time">3h ago</span>
+            </div>
+        </div>
+        <!-- TEAM MEMBERS SECTION  -->
+        <div class="team-card">
+            <h3>Team Members</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>ROLE</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Sarah Chen</td>
+                        <td>sarah@acme.co</td>
+                        <td>Admin</td>
+                        <td><span class="badge active">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Alex Rivera</td>
+                        <td>alex@acme.co</td>
+                        <td>Developer</td>
+                        <td><span class="badge active">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Jordan Lee</td>
+                        <td>jordan@acme.co</td>
+                        <td>Viewer</td>
+                        <td><span class="badge inactive">Inactive</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Morgan Kim</td>
+                        <td>morgan@acme.co</td>
+                        <td>Developer</td>
+                        <td><span class="badge active">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Casey Park</td>
+                        <td>casey@acme.co</td>
+                        <td>Admin</td>
+                        <td><span class="badge active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="Analytics" class="Analytics">
+        <div class="Analytics-content">
+            <h1>Analytics</h1>
+            <p>Traffic and engagement metrics</p>
+        </div>
+        <!-- Bar Chart Section -->
+        <div class="chart-box">
+            <div class="controls">
+                <button onclick="setBarMonthly()" class="graph-btn">Monthly</button>
+                <button onclick="setBarWeekly()" class="graph-btn">Weekly</button>
+                <button onclick="randomizeBarData()" class="graph-btn">Update Data</button>
+            </div>
+
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <!-- Pie Chart Section -->
+        <div class="chart-box pie-chart-box">
+            <h1>Digital Growth</h1>
+            <div class="controls">
+                <button onclick="randomizePieData()" class="graph-btn">Update Data</button>
+            </div>
+
+            <div class="pie-chart-wrapper">
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="Customers" class="customers">
+        <div class="customers-container">
+
+            <div class="Customers-content">
+                <h1>Customers</h1>
+                <p>Manage your customer base</p>
+            </div>
+
+            <!-- TOP BAR -->
+            <div class="top-bar">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Filter customers...">
+                </div>
+                <span class="count" id="customerCount">6 customers</span>
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-wrapper">
+                <table id="customerTable">
+                    <thead>
+                        <tr>
+                            <th>CUSTOMER</th>
+                            <th>SPENT</th>
+                            <th>ORDERS</th>
+                            <th>STATUS</th>
+                            <th>JOINED</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><strong>Olivia Martin</strong><br><span>olivia@example.com</span></td>
+                            <td>$1,250.00</td>
+                            <td>12</td>
+                            <td><span class="badge active">Active</span></td>
+                            <td>Jan 2024</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>William Chen</strong><br><span>william@example.com</span></td>
+                            <td>$450.00</td>
+                            <td>4</td>
+                            <td><span class="badge inactive">Inactive</span></td>
+                            <td>Mar 2024</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Mia Thompson</strong><br><span>mia@example.com</span></td>
+                            <td>$120.00</td>
+                            <td>1</td>
+                            <td><span class="badge churned">Churned</span></td>
+                            <td>May 2024</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Jackson Lee</strong><br><span>jackson@example.com</span></td>
+                            <td>$890.00</td>
+                            <td>8</td>
+                            <td><span class="badge active">Active</span></td>
+                            <td>Feb 2024</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Rin nobara</strong><br><span>rin@example.com</span></td>
+                            <td>$2,100.00</td>
+                            <td>12</td>
+                            <td><span class="badge active">Active</span></td>
+                            <td>Nov 2024</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Obito uchiha</strong><br><span>tobi@example.com</span></td>
+                            <td>$1,800.00</td>
+                            <td>16</td>
+                            <td><span class="badge inactive">Inactive</span></td>
+                            <td>Aug 2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    <!-- ORDERS SECTION  -->
+    <section id="Orders" class="orders">
+
+        <div class="orders-header">
+            <h1>Orders</h1>
+            <p>Track and manage orders</p>
+        </div>
+
+        <!-- STATS -->
+        <div class="order-stats">
+
+            <div class="stat-card">
+                <p>Total Orders</p>
+                <h2>1,284</h2>
+                <span class="positive">+42 this week</span>
+            </div>
+
+            <div class="stat-card">
+                <p>Revenue</p>
+                <h2>$24,580</h2>
+                <span class="positive">+12.3% this month</span>
+            </div>
+
+            <div class="stat-card">
+                <p>Avg. Fulfillment</p>
+                <h2>1.4 days</h2>
+                <span class="positive">-0.2 days</span>
+            </div>
+
+            <div class="stat-card">
+                <p>Delivered</p>
+                <h2>96.2%</h2>
+                <span class="positive">+0.8% this month</span>
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="orders-table">
+
+            <h3>Recent Orders</h3>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ORDER</th>
+                            <th>CUSTOMER</th>
+                            <th>DATE</th>
+                            <th>ITEMS</th>
+                            <th>TOTAL</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>#ORD-7291</td>
+                            <td>Olivia Martin</td>
+                            <td>Mar 12, 2026</td>
+                            <td>3</td>
+                            <td>$249.00</td>
+                            <td><span class="badge delivered">Delivered</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#ORD-7290</td>
+                            <td>Jackson Lee</td>
+                            <td>Mar 12, 2026</td>
+                            <td>1</td>
+                            <td>$89.00</td>
+                            <td><span class="badge shipped">Shipped</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#ORD-7289</td>
+                            <td>Isabella Nguyen</td>
+                            <td>Mar 11, 2026</td>
+                            <td>5</td>
+                            <td>$520.00</td>
+                            <td><span class="badge processing">Processing</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#ORD-7287</td>
+                            <td>Ethan Garcia</td>
+                            <td>Mar 10, 2026</td>
+                            <td>4</td>
+                            <td>$340.00</td>
+                            <td><span class="badge cancelled">Cancelled</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#ORD-7285</td>
+                            <td>Rin nobara</td>
+                            <td>Mar 05, 2026</td>
+                            <td>4</td>
+                            <td>$349.00</td>
+                            <td><span class="badge cancelled">Cancelled</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#ORD-7286</td>
+                            <td>Obito uchiha</td>
+                            <td>Mar 10, 2026</td>
+                            <td>4</td>
+                            <td>$650.00</td>
+                            <td><span class="badge shipped">shipped</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- REPORTS SECTION  -->
+    <section id="Reports" class="reports">
+
+        <div class="reports-header">
+            <h1>Reports</h1>
+            <p>Generated reports and exports</p>
+        </div>
+
+        <div class="reports-list">
+
+            <!-- ITEM -->
+            <div class="report-item">
+                <div class="report-left">
+                    <i class="fa fa-file-text report-icon"></i>
+                    <div>
+                        <h3>Monthly Revenue Report</h3>
+                        <p>Revenue breakdown by product category</p>
+                    </div>
+                </div>
+
+                <div class="report-right">
+                    <span class="tag financial">Financial</span>
+                    <span class="date">Mar 1, 2026</span>
+                    <i class="fa fa-download action-icon"></i>
+                </div>
+            </div>
+
+            <div class="report-item">
+                <div class="report-left">
+                    <i class="fa fa-file-text report-icon"></i>
+                    <div>
+                        <h3>User Acquisition Report</h3>
+                        <p>New signups, sources, and conversion funnel</p>
+                    </div>
+                </div>
+
+                <div class="report-right">
+                    <span class="tag marketing">Marketing</span>
+                    <span class="date">Mar 1, 2026</span>
+                    <i class="fa fa-download action-icon"></i>
+                </div>
+            </div>
+
+            <div class="report-item">
+                <div class="report-left">
+                    <i class="fa fa-file-text report-icon"></i>
+                    <div>
+                        <h3>Inventory Status</h3>
+                        <p>Current stock levels and reorder alerts</p>
+                    </div>
+                </div>
+
+                <div class="report-right">
+                    <span class="tag operations">Operations</span>
+                    <span class="date">Feb 28, 2026</span>
+                    <i class="fa fa-download action-icon"></i>
+                </div>
+            </div>
+
+            <div class="report-item">
+                <div class="report-left">
+                    <i class="fa fa-file-text report-icon"></i>
+                    <div>
+                        <h3>Customer Satisfaction Survey</h3>
+                        <p>NPS scores and feedback summary</p>
+                    </div>
+                </div>
+
+                <div class="report-right">
+                    <span class="tag support">Support</span>
+                    <span class="date">Feb 25, 2026</span>
+                    <i class="fa fa-download action-icon"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- INTEGARTION SECTION  -->
+    <section id="Integration" class="integration-section">
+
+        <div class="section-header">
+            <h1>Integrations</h1>
+            <p>Connect third-party services</p>
+        </div>
+
+        <div class="integration-grid">
+
+            <!-- CARD -->
+            <div class="integration-card">
+                <div class="card-left">
+                    <i class="fa fa-credit-card icon"></i>
+                    <div>
+                        <h3>Stripe</h3>
+                        <p>Payment processing and billing</p>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span class="status connected">Connected</span>
+                    <button class="config-btn">Configure</button>
+                </div>
+            </div>
+
+            <div class="integration-card">
+                <div class="card-left">
+                    <i class="fa fa-comment icon"></i>
+                    <div>
+                        <h3>Slack</h3>
+                        <p>Team notifications and alerts</p>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span class="status connected">Connected</span>
+                    <button class="config-btn">Configure</button>
+                </div>
+            </div>
+
+            <div class="integration-card">
+                <div class="card-left">
+                    <i class="fa fa-github icon"></i>
+                    <div>
+                        <h3>GitHub</h3>
+                        <p>Repository and deployment sync</p>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span class="status connected">Connected</span>
+                    <button class="config-btn">Configure</button>
+                </div>
+            </div>
+
+            <!-- NOT CONNECTED -->
+            <div class="integration-card">
+                <div class="card-left">
+                    <i class="fa fa-envelope icon"></i>
+                    <div>
+                        <h3>SendGrid</h3>
+                        <p>Transactional email delivery</p>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span class="status disconnected">Not connected</span>
+                    <button class="connect-btn">Connect</button>
+                </div>
+            </div>
+
+            <div class="integration-card">
+                <div class="card-left">
+                    <i class="fa fa-cloud icon"></i>
+                    <div>
+                        <h3>AWS S3</h3>
+                        <p>File storage and CDN</p>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span class="status disconnected">Not connected</span>
+                    <button class="connect-btn">Connect</button>
+                </div>
+            </div>
+
+            <div class="integration-card">
+                <div class="card-left">
+                    <i class="fa fa-database icon"></i>
+                    <div>
+                        <h3>PostgreSQL</h3>
+                        <p>Database connection</p>
+                    </div>
+                </div>
+
+                <div class="card-bottom">
+                    <span class="status connected">Connected</span>
+                    <button class="config-btn">Configure</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- SETTINGS SECTION  -->
+    <section id="Settings" class="settings-section">
+
+        <div class="section-header">
+            <h1>Settings</h1>
+            <p>Manage workspace preferences</p>
+        </div>
+
+        <!-- PROFILE CARD -->
+        <div class="settings-card">
+            <h3>Profile</h3>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Display Name</label>
+                    <input type="text" value="Admin User">
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" value="admin@acme.co">
+                </div>
+            </div>
+
+            <button class="save-btn">Save Changes</button>
+        </div>
+
+        <!-- NOTIFICATIONS -->
+        <div class="settings-card">
+            <h3>Notifications</h3>
+
+            <div class="toggle-row">
+                <div>
+                    <strong>Email notifications</strong>
+                    <p>Receive updates via email</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="toggle-row">
+                <div>
+                    <strong>Push notifications</strong>
+                    <p>Browser push notifications</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="toggle-row">
+                <div>
+                    <strong>Weekly digest</strong>
+                    <p>Summary of activity each week</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- DANGER ZONE -->
+        <div class="danger-card">
+            <h3>Danger Zone</h3>
+            <p>Once deleted, your workspace cannot be recovered.</p>
+            <button class="delete-btn">Delete Workspace</button>
+        </div>
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
